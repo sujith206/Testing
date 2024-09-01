@@ -9,21 +9,28 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class selenium{
 
 	WebDriver driver;
-		@Before
-		public void before() throws Throwable {
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-			Thread.sleep(5000);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-		}
+	@Before
+	public void before() throws Throwable {
+	    WebDriverManager.chromedriver().setup();
+
+	    ChromeOptions options = new ChromeOptions();
+	    options.addArguments("--headless");
+	    options.addArguments("--no-sandbox");
+	    options.addArguments("--disable-dev-shm-usage");
+
+	    driver = new ChromeDriver(options);
+	    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    Thread.sleep(5000);
+	    driver.manage().window().maximize();
+	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	}
 		
 		@Test
 		public void test() throws Exception {
