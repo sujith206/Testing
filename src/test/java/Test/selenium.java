@@ -40,6 +40,7 @@ public class selenium{
 		driver.findElement(By.xpath("//*[@name='password']")).sendKeys("admin123");
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//*[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")).click();
+		System.out.println("title"+driver.getTitle());
 		}
 		
 		@After
