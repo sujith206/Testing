@@ -22,14 +22,14 @@ import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class selenium{
-
 	WebDriver driver;
+	
 	@Before
 	public void before() throws Throwable {
 	    WebDriverManager.chromedriver().setup();
 
 	    
-
+	    
 	    driver = new ChromeDriver();
 	    driver.get("https://www.amazon.in/");
 	    Thread.sleep(5000);
@@ -37,9 +37,14 @@ public class selenium{
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 		
-		
-		
-		
+		@Test
+		public void test() throws Throwable {
+		    WebDriverManager.chromedriver().setup();
+
+		    String title = driver.getTitle();
+		    
+		   System.out.println("title is:"+title);
+		}
 		
 		
 	
